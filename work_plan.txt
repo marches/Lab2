@@ -1,0 +1,27 @@
+﻿1. Input Conditionings (Thursday 10/11 with check in on Wednesday 10/10) - March
+   1. Edge detection (30 mins)
+   2. Schematic (30 mins)
+   3. Test Bench & Waveforms (1 hour)
+      1. Document waveforms for report
+   1. Debugging (2 hours)
+   2. Answering the question: (15 mins??)
+      1. If the main system clock is running at 50MHz, what is the maximum length input glitch that will be suppressed by this design for a waittime of 10? Include the analysis in your report.
+1. Shift Register (Thursday 10/11 with check in on Wednesday 10/10) - Annie
+   1. Serial Data In behavior (1 hour)
+   2. Parallel Data In behavior (30 mins)
+   3. Serial Data out behavior (30 hour)
+   4. Parallel Data out behavior (30 mins)
+   5. Test Benches (1 hour)
+      1. Document testbench strategy for report
+   1. Debugging (2 hour)
+1. Midpoint (Friday 10/12)
+   1. Putting all parts together (1 hour)
+   2. Integrating with FPGA (1 hour)
+   3. Figuring out good tests (1 hour)
+   4. Performing those tests (1 hour)
+1. SPI Memory (9 hours)
+   1. State Machine Design (3 hours)
+   2. Behavior Implementation (1 hour)
+   3. Test bench writing (1 hour)
+   4. Debugging (3 hours)
+   5. Testing with Arduino (1 hour)
