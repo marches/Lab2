@@ -20,19 +20,32 @@ output reg  negativeedge    // 1 clk pulse at falling edge of conditioned
     reg[counterwidth-1:0] counter = 0;
     reg synchronizer0 = 0;
     reg synchronizer1 = 0;
-    
+
     always @(posedge clk ) begin
-        if(conditioned == synchronizer1)
+        
+        if(conditioned == synchronizer1) begin
             counter <= 0;
+            // Reset edge detect
+            positiveedge <= 0;
+            negativeedge <= 0;
+        end
         else begin
             if( counter == waittime) begin
                 counter <= 0;
+                // Signal about to go through d flip flop. Now is the time to look at 
+                if (synchronizer1 == 1 && conditioned == 0)
+                    positiveedge <= 1;
+                if (synchronizer1 == 0 && conditioned == 1)
+                    negativeedge <= 1;
                 conditioned <= synchronizer1;
             end
             else 
                 counter <= counter+1;
         end
+
         synchronizer0 <= noisysignal;
         synchronizer1 <= synchronizer0;
+
     end
+
 endmodule
