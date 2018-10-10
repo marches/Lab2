@@ -24,17 +24,171 @@ module testshiftregister();
     //shiftregister #(8) dut (clk,peripheralClkEdge,parallelLoad,parallelDataOut,serialDataOut,parallelDataIn,serialDataIn);
     reg dutpassed;
     initial begin
+
+    //running test for serial loading with 0 serial data out
     parallelLoad = 0;
-    parallelDataIn = 8'd15;
+    parallelDataIn = 8'd16;
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
     serialDataIn = 1;
-    //#5 clk=1; #5 clk=0; #5 clk=0; #5 clk=1; #5 clk=0; #5 clk=0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
     #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
 
-    if((parallelDataOut !== 0) || (serialDataOut !== 0)) begin
+    //testing for 0 serial out and serial loading
+    if((parallelDataOut !== 8'b01001111) || (serialDataOut !== 0)) begin
       dutpassed = 0;
       $display("Test Case 1 Failed");
       $display("%b  |  %b", parallelDataOut, serialDataOut);
     end
+
+    //running test for serial loading with 1 serial data out
+    parallelLoad = 0;
+    parallelDataIn = 8'd16;
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+
+    //testing for 0 serial out and serial loading
+    if((parallelDataOut !== 8'b11001111) || (serialDataOut !== 1)) begin
+      dutpassed = 0;
+      $display("Test Case 2 Failed");
+      $display("%b  |  %b", parallelDataOut, serialDataOut);
+    end
+
+
+    //setup for 0 serial out and parallel loading
+    parallelLoad = 1;
+    parallelDataIn = 8'd16;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+
+    //testing for 0 serial out and parallel loading
+    if((parallelDataOut !== 8'b00010000) || (serialDataOut !== 0)) begin
+      dutpassed = 0;
+      $display("Test Case 3 Failed");
+      $display("%b  |  %b", parallelDataOut, serialDataOut);
+    end
+
+
+    //setting up for 1 serial out and parallel loading
+    parallelDataIn = 8'd128;
+    parallelLoad = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+
+    //testing for 0 serial out and parallel loading
+    if((parallelDataOut !== 8'b10000000) || (serialDataOut !== 1)) begin
+      dutpassed = 0;
+      $display("Test Case 4 Failed");
+      $display("%b  |  %b", parallelDataOut, serialDataOut);
+    end
+
+    //testing 0 edge case (parallel loading)
+
+    //setting up for 0 serial out and parallel loading
+    parallelDataIn = 8'd0;
+    parallelLoad = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+
+    //testing for 0 serial out and parallel loading
+    if((parallelDataOut !== 8'b00000000) || (serialDataOut !== 0)) begin
+      dutpassed = 0;
+      $display("Test Case 5(Zeros Parallel Loading) Failed");
+      $display("%b  |  %b", parallelDataOut, serialDataOut);
+    end
+
+    //running test for serial loading with 0 serial data out
+    parallelLoad = 0;
+    parallelDataIn = 8'd101;
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 0;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+
+    //testing for 0 serial out and serial loading
+    if((parallelDataOut !== 8'b00000000) || (serialDataOut !== 0)) begin
+      dutpassed = 0;
+      $display("Test Case 6 (Zeros Serial Loading) Failed");
+      $display("%b  |  %b", parallelDataOut, serialDataOut);
+    end
+
+
+    //testing 0 edge case (parallel loading)
+
+    //setting up for 0 serial out and parallel loading
+    parallelDataIn = 8'd255;
+    parallelLoad = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+
+    //testing for 0 serial out and parallel loading
+    if((parallelDataOut !== 8'b11111111) || (serialDataOut !== 1)) begin
+      dutpassed = 0;
+      $display("Test Case 5(Zeros Parallel Loading) Failed");
+      $display("%b  |  %b", parallelDataOut, serialDataOut);
+    end
+
+    //running test for serial loading with 0 serial data out
+    parallelLoad = 0;
+    parallelDataIn = 8'd101;
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    serialDataIn = 1;
+    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+
+    //testing for 1 serial out and serial loading
+    if((parallelDataOut !== 8'b11111111) || (serialDataOut !== 1)) begin
+      dutpassed = 0;
+      $display("Test Case 6 (Zeros Serial Loading) Failed");
+      $display("%b  |  %b", parallelDataOut, serialDataOut);
+    end
+
+
     end
 
 endmodule
