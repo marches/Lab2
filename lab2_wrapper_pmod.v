@@ -22,8 +22,6 @@
 //     labeled (usually on the right, except the SWT Pmod).
 //-----------------------------------------------------------------------------
 
-`timescale 1ns / 1ps
-
 `include "shiftregister.v"
 `include "inputconditioner.v"
 
@@ -36,7 +34,7 @@ module lab0_wrapper_pmod
     output [7:0] je         // Plug LD8 into JE, used to display sum, cout, overflow
 );
 
-    wire[3:0] opA, opB;       // Inputs to adder
+    wire[3:0] parallelDataOut, opB;       // Inputs to adder
     wire[3:0] sum;            // Output from adder
     wire cout;                // Carry out from adder
     wire ovf;                 // Overflow from adder
@@ -50,9 +48,18 @@ module lab0_wrapper_pmod
     assign je[6] = cout;
     assign je[7] = ovf;
 
-    assign led = opA;   // Echo opA to built-in LEDs for debugging
+    assign led = parallelDataOut;   // Echo opA to built-in LEDs for debugging
 
     // TODO: You write the body of your FullAdder4bit module in adder.v
-    FullAdder4bit adder(.sum(sum), .carryout(cout), .overflow(ovf), .a(opA), .b(opB));
+    inputconditioner ic1 (.clk(clk),.noisysignal(noisysignal),.conditioned(conditioned),.positiveedge(positiveedge),.negativeedge(negativeedge));
+    inputconditioner ic1 (.clk(clk),.noisysignal(noisysignal),.conditioned(conditioned),.positiveedge(positiveedge),.negativeedge(negativeedge));
+    inputconditioner ic1 (.clk(clk),.noisysignal(noisysignal),.conditioned(conditioned),.positiveedge(positiveedge),.negativeedge(negativeedge));
+    shiftregister #(8) dut(.clk(clk),
+    		           .peripheralClkEdge(peripheralClkEdge),
+    		           .parallelLoad(parallelLoad),
+    		           .parallelDataIn(parallelDataIn),
+    		           .serialDataIn(serialDataIn),
+    		           .parallelDataOut(parallelDataOut),
+    		           .serialDataOut(serialDataOut));
 
 endmodule
