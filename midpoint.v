@@ -71,7 +71,7 @@ module rapper
     wire[7:0] parallelDataOut;
     wire serialDataOut;
 
-    assign FixedParallelIn= 8'b00100101;    
+    assign FixedParallelIn= 8'b00100101;    // we are rebels and use a different numbers    
 
     inputconditioner ic1 (.clk(clk),.noisysignal(btn[1]),.conditioned(cout0),.positiveedge(pos0),.negativeedge(neg0));
     inputconditioner ic2 (.clk(clk),.noisysignal(sw[0]),.conditioned(cout1),.positiveedge(pos1),.negativeedge(neg1));
