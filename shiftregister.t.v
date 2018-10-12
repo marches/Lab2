@@ -24,56 +24,62 @@ module testshiftregister();
     //shiftregister #(8) dut (clk,peripheralClkEdge,parallelLoad,parallelDataOut,serialDataOut,parallelDataIn,serialDataIn);
     reg dutpassed;
     initial begin
-
     //running test for serial loading with 0 serial data out
+
     parallelLoad = 0;
     parallelDataIn = 8'd16;
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    peripheralClkEdge = 1;
 
-    //testing for 0 serial out and serial loading
-    if((parallelDataOut !== 8'b01001111) || (serialDataOut !== 0)) begin
+    #5 clk = 0; #5 clk = 1;
+    serialDataIn = 1;
+    #5 clk = 0; #5 clk = 1;
+    serialDataIn = 0;
+    peripheralClkEdge = 0;
+    #5 clk = 0; #5 clk = 1;
+    peripheralClkEdge = 1;
+    #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1;
+    serialDataIn = 0;
+    #5 clk = 0; #5 clk = 1;
+    serialDataIn = 1;
+    #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1;
+    serialDataIn = 1;
+    #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1;
+
+    //testing for 1 serial out and serial loading
+    if((parallelDataOut !== 8'b10001111) || (serialDataOut !== 1)) begin
       dutpassed = 0;
       $display("Test Case 1 Failed");
       $display("%b  |  %b", parallelDataOut, serialDataOut);
     end
 
-    //running test for serial loading with 1 serial data out
+    //running test for serial loading with 0 serial data out
     parallelLoad = 0;
     parallelDataIn = 8'd16;
     serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    peripheralClkEdge = 1;
+
+    #5 clk = 0; #5 clk = 1;
     serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    #5 clk = 0; #5 clk = 1;
+    serialDataIn = 1;
+    peripheralClkEdge = 0;
+    #5 clk = 0; #5 clk = 1;
+    peripheralClkEdge = 1;
+    #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1;
     serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1;
     serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1;
 
     //testing for 0 serial out and serial loading
-    if((parallelDataOut !== 8'b11001111) || (serialDataOut !== 1)) begin
+    if((parallelDataOut !== 8'b01100011) || (serialDataOut !== 0)) begin
       dutpassed = 0;
       $display("Test Case 2 Failed");
       $display("%b  |  %b", parallelDataOut, serialDataOut);
@@ -84,6 +90,9 @@ module testshiftregister();
     parallelLoad = 1;
     parallelDataIn = 8'd16;
     #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
 
     //testing for 0 serial out and parallel loading
     if((parallelDataOut !== 8'b00010000) || (serialDataOut !== 0)) begin
@@ -97,6 +106,9 @@ module testshiftregister();
     parallelDataIn = 8'd128;
     parallelLoad = 1;
     #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
 
     //testing for 0 serial out and parallel loading
     if((parallelDataOut !== 8'b10000000) || (serialDataOut !== 1)) begin
@@ -111,6 +123,9 @@ module testshiftregister();
     parallelDataIn = 8'd0;
     parallelLoad = 1;
     #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
 
     //testing for 0 serial out and parallel loading
     if((parallelDataOut !== 8'b00000000) || (serialDataOut !== 0)) begin
@@ -123,21 +138,10 @@ module testshiftregister();
     parallelLoad = 0;
     parallelDataIn = 8'd101;
     serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 0;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    peripheralClkEdge = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
 
     //testing for 0 serial out and serial loading
     if((parallelDataOut !== 8'b00000000) || (serialDataOut !== 0)) begin
@@ -153,6 +157,9 @@ module testshiftregister();
     parallelDataIn = 8'd255;
     parallelLoad = 1;
     #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
 
     //testing for 0 serial out and parallel loading
     if((parallelDataOut !== 8'b11111111) || (serialDataOut !== 1)) begin
@@ -161,25 +168,14 @@ module testshiftregister();
       $display("%b  |  %b", parallelDataOut, serialDataOut);
     end
 
-    //running test for serial loading with 0 serial data out
+    //running test for serial loading with 1 serial data out
     parallelLoad = 0;
     parallelDataIn = 8'd101;
     serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
-    serialDataIn = 1;
-    #10 peripheralClkEdge = 0; #10 peripheralClkEdge = 1; #10
+    peripheralClkEdge = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
+    #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1; #5 clk = 0; #5 clk = 1;
 
     //testing for 1 serial out and serial loading
     if((parallelDataOut !== 8'b11111111) || (serialDataOut !== 1)) begin

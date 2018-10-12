@@ -116,7 +116,7 @@ module lab0_wrapper
 
     assign FixedParallelIn= 8'b0100101;
 
-    inputconditioner ic1 (.clk(clk),.noisysignal(btn[0]),.conditioned(cout0),.positiveedge(pos0),.negativeedge(neg0));
+    inputconditioner ic1 (.clk(clk),.noisysignal(btn[1]),.conditioned(cout0),.positiveedge(pos0),.negativeedge(neg0));
     inputconditioner ic2 (.clk(clk),.noisysignal(sw[0]),.conditioned(cout1),.positiveedge(pos1),.negativeedge(neg1));
     inputconditioner ic3 (.clk(clk),.noisysignal(sw[1]),.conditioned(cout2),.positiveedge(pos2),.negativeedge(neg2));
     shiftregister #(8) dut(.clk(clk),
