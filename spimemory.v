@@ -5,6 +5,7 @@
 `include "shiftregister.v"
 `include "inputconditioner.v"
 `include "datamemory.v"
+`include "fsm.v"
 
 
 module dff #( parameter W = 8)
@@ -31,7 +32,7 @@ module spiMemory
     output [3:0]    leds        // LEDs for debugging
 );
 
-	wire mosi_cond, mosi_pos, mosi_neg, sclk_pos, sclk_neg, cs_cond, cs_pos, cs_neg;
+	wire mosi_cond, mosi_pos, mosi_neg, sclk_cond, sclk_pos, sclk_neg, cs_cond, cs_pos, cs_neg;
     wire miso_bufe, dm_we, addr_we, sr_we;
     wire[7:0] shiftRegOutP, dataMemOut, addressLatchOut;
     wire[6:0] address;
@@ -74,6 +75,16 @@ module spiMemory
 						.enable(addr_we),
 						.d(shiftRegOutP),
 						.q(addressLatchOut));
+
+	fsm finite_state_m (.cs(cs_cond), 
+						.clk(clk),
+						.sclk(sclk_pos),
+						.shiftRegOut0(shiftRegOutP[0]),
+						.add_WE(addr_we),
+						.DM_WE(dm_we),
+						.SR_WE(sr_we),
+						.MISO_Buff(miso_bufe));
+
 	// bufif1(out, in, control)
 	//           control
 	// in |      0 1 x z
