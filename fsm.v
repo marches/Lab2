@@ -15,9 +15,10 @@ module fsm
   output SR_WE,
   output MISO_Buff
   );
-      reg state;
+      reg[2:0] state;
+      initial state = `OFF;
       parameter waittime = 7;
-      reg counter;
+      reg[4:0] counter;
       initial counter <= 0;
       reg miOut, moMem, turnOn;
       reg add_WE, DM_WE, SR_WE, MISO_Buff;
@@ -32,25 +33,31 @@ module fsm
       end
 
       always @(posedge sclk) begin
+
       if (cs)begin
         state <= `OFF;
         turnOn <= 0;
       end
+
       else if (cs == 0 && state==`OFF)begin
         if (turnOn == 0)begin
           counter <= 0;
           turnOn <= 1;
         end
-        if (counter == 3'd7)
+        if (counter == 3'd7)begin
           state <= `ADDRESS;
+        end
       end
+
       else if (state == `ADDRESS && shiftRegOut0 == 0)begin
         state <= `MISO_REG;
       end
+
       else if (state == `MISO_REG)begin
         state <= `MISO_OUT;
         miOut <= 0;
       end
+
       else if (state == `MISO_OUT)begin
         if (miOut == 0)begin
           counter <= 0;
@@ -59,18 +66,22 @@ module fsm
         if (counter == 3'd7)
           state <= `OFF;
       end
+
       else if (state == `ADDRESS && shiftRegOut0 == 1)begin
         state <= `MOSI_MEM;
         moMem <= 0;
       end
+
       else if(state == `MOSI_MEM)begin
         if (moMem == 0) begin
           moMem <= 1;
           counter <= 0;
+        end
         if (counter == 3'd7)
           state <= `MOSI_WRI;
       end
-      else if (state == `MOSI_WRI)
+
+      else if (state == `MOSI_WRI)begin
         state <= `OFF;
       end
       end
