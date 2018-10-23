@@ -78,7 +78,7 @@ module spiMemory
 
 	fsm finite_state_m (.cs(cs_cond),
 						.clk(clk),
-						.sclk(sclk_pos),
+						.sclk(sclk_cond),
 						.shiftRegOut0(shiftRegOutP[0]),
 						.add_WE(addr_we),
 						.DM_WE(dm_we),

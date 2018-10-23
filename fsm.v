@@ -17,7 +17,7 @@ module fsm
   );
       reg[2:0] state;
       initial state = `OFF;
-      parameter waittime = 8;
+      parameter waittime = 7;
       reg[4:0] counter;
       initial counter <= 0;
       reg miOut, moMem, turnOn;
@@ -84,11 +84,11 @@ module fsm
       else if(state == `MOSI_MEM)begin
         $display("In state of mosimem");
         if (moMem == 0) begin
-          moMem <= 1;
-          counter <= 0;
+          moMem = 1;
+          counter = 0;
           $display("MOSI counter: %b",counter);
         end
-        if (counter == 3'd7)
+        if (counter == waittime-1)
           state <= `MOSI_WRI;
           $display("MOSI counter: %b",counter);
       end

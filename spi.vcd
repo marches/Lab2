@@ -1,5 +1,5 @@
 $date
-	Tue Oct 23 17:52:31 2018
+	Tue Oct 23 18:48:51 2018
 $end
 $version
 	Icarus Verilog
@@ -11,139 +11,142 @@ $scope module spimemory_test $end
 $var wire 4 ! leds [3:0] $end
 $var wire 1 " miso_pin $end
 $var wire 1 # dataOut $end
-$var reg 1 $ clk $end
-$var reg 1 % cs_pin $end
-$var reg 1 & mosi_pin $end
-$var reg 1 ' sclk_pin $end
+$var wire 1 $ cs_pin $end
+$var reg 1 % clk $end
+$var reg 1 & cs $end
+$var reg 1 ' mosi_pin $end
+$var reg 1 ( sclk_pin $end
 $scope module dut $end
-$var wire 1 $ clk $end
-$var wire 1 % cs_pin $end
-$var wire 4 ( leds [3:0] $end
+$var wire 1 % clk $end
+$var wire 4 ) leds [3:0] $end
 $var wire 1 " miso_pin $end
-$var wire 1 & mosi_pin $end
-$var wire 1 ' sclk_pin $end
-$var wire 1 ) sr_we $end
-$var wire 1 * shiftRegOutS $end
-$var wire 8 + shiftRegOutP [7:0] $end
-$var wire 1 , sclk_pos $end
-$var wire 1 - sclk_neg $end
-$var wire 1 . sclk_cond $end
-$var wire 1 / mosi_pos $end
-$var wire 1 0 mosi_neg $end
-$var wire 1 1 mosi_cond $end
-$var wire 1 2 miso_bufe $end
-$var wire 1 3 misoPreBufe $end
-$var wire 1 4 dm_we $end
-$var wire 8 5 dataMemOut [7:0] $end
-$var wire 1 6 cs_pos $end
-$var wire 1 7 cs_neg $end
-$var wire 1 8 cs_cond $end
-$var wire 8 9 addressLatchOut [7:0] $end
-$var wire 7 : address [6:0] $end
-$var wire 1 ; addr_we $end
+$var wire 1 ' mosi_pin $end
+$var wire 1 ( sclk_pin $end
+$var wire 1 * sr_we $end
+$var wire 1 + shiftRegOutS $end
+$var wire 8 , shiftRegOutP [7:0] $end
+$var wire 1 - sclk_pos $end
+$var wire 1 . sclk_neg $end
+$var wire 1 / sclk_cond $end
+$var wire 1 0 mosi_pos $end
+$var wire 1 1 mosi_neg $end
+$var wire 1 2 mosi_cond $end
+$var wire 1 3 miso_bufe $end
+$var wire 1 4 misoPreBufe $end
+$var wire 1 5 dm_we $end
+$var wire 8 6 dataMemOut [7:0] $end
+$var wire 1 7 cs_pos $end
+$var wire 1 $ cs_pin $end
+$var wire 1 8 cs_neg $end
+$var wire 1 9 cs_cond $end
+$var wire 8 : addressLatchOut [7:0] $end
+$var wire 7 ; address [6:0] $end
+$var wire 1 < addr_we $end
 $scope module addr_latch $end
-$var wire 1 $ clk $end
-$var wire 1 ; enable $end
-$var wire 8 < d [7:0] $end
-$var reg 8 = q [7:0] $end
+$var wire 1 % clk $end
+$var wire 1 < enable $end
+$var wire 8 = d [7:0] $end
+$var reg 8 > q [7:0] $end
 $upscope $end
 $scope module data_mem $end
-$var wire 7 > address [6:0] $end
-$var wire 1 $ clk $end
-$var wire 1 4 writeEnable $end
-$var wire 8 ? dataIn [7:0] $end
-$var reg 8 @ dataOut [7:0] $end
+$var wire 7 ? address [6:0] $end
+$var wire 1 % clk $end
+$var wire 1 5 writeEnable $end
+$var wire 8 @ dataIn [7:0] $end
+$var reg 8 A dataOut [7:0] $end
 $upscope $end
 $scope module dut $end
-$var wire 1 $ clk $end
-$var wire 8 A parallelDataIn [7:0] $end
-$var wire 8 B parallelDataOut [7:0] $end
-$var wire 1 * serialDataOut $end
-$var wire 1 1 serialDataIn $end
-$var wire 1 , peripheralClkEdge $end
-$var wire 1 ) parallelLoad $end
-$var reg 8 C shiftregistermem [7:0] $end
+$var wire 1 % clk $end
+$var wire 8 B parallelDataIn [7:0] $end
+$var wire 8 C parallelDataOut [7:0] $end
+$var wire 1 + serialDataOut $end
+$var wire 1 2 serialDataIn $end
+$var wire 1 - peripheralClkEdge $end
+$var wire 1 * parallelLoad $end
+$var reg 8 D shiftregistermem [7:0] $end
 $upscope $end
 $scope module finite_state_m $end
-$var wire 1 $ clk $end
-$var wire 1 D shiftRegOut0 $end
-$var wire 1 , sclk $end
-$var wire 1 8 cs $end
-$var reg 1 4 DM_WE $end
-$var reg 1 2 MISO_Buff $end
-$var reg 1 ) SR_WE $end
-$var reg 1 ; add_WE $end
-$var reg 5 E counter [4:0] $end
-$var reg 1 F miOut $end
-$var reg 1 G moMem $end
-$var reg 3 H state [2:0] $end
-$var reg 1 I turnOn $end
+$var wire 1 % clk $end
+$var wire 1 E shiftRegOut0 $end
+$var wire 1 / sclk $end
+$var wire 1 9 cs $end
+$var reg 1 5 DM_WE $end
+$var reg 1 3 MISO_Buff $end
+$var reg 1 * SR_WE $end
+$var reg 1 < add_WE $end
+$var reg 5 F counter [4:0] $end
+$var reg 1 G miOut $end
+$var reg 1 H moMem $end
+$var reg 3 I state [2:0] $end
+$var reg 1 J turnOn $end
 $upscope $end
 $scope module ic0 $end
-$var wire 1 $ clk $end
-$var wire 1 & noisysignal $end
-$var reg 1 1 conditioned $end
-$var reg 3 J counter [2:0] $end
-$var reg 1 0 negativeedge $end
-$var reg 1 / positiveedge $end
-$var reg 1 K synchronizer0 $end
-$var reg 1 L synchronizer1 $end
+$var wire 1 % clk $end
+$var wire 1 ' noisysignal $end
+$var reg 1 2 conditioned $end
+$var reg 3 K counter [2:0] $end
+$var reg 1 1 negativeedge $end
+$var reg 1 0 positiveedge $end
+$var reg 1 L synchronizer0 $end
+$var reg 1 M synchronizer1 $end
 $upscope $end
 $scope module ic1 $end
-$var wire 1 $ clk $end
-$var wire 1 ' noisysignal $end
-$var reg 1 . conditioned $end
-$var reg 3 M counter [2:0] $end
-$var reg 1 - negativeedge $end
-$var reg 1 , positiveedge $end
-$var reg 1 N synchronizer0 $end
-$var reg 1 O synchronizer1 $end
+$var wire 1 % clk $end
+$var wire 1 ( noisysignal $end
+$var reg 1 / conditioned $end
+$var reg 3 N counter [2:0] $end
+$var reg 1 . negativeedge $end
+$var reg 1 - positiveedge $end
+$var reg 1 O synchronizer0 $end
+$var reg 1 P synchronizer1 $end
 $upscope $end
 $scope module ic2 $end
-$var wire 1 $ clk $end
-$var wire 1 % noisysignal $end
-$var reg 1 8 conditioned $end
-$var reg 3 P counter [2:0] $end
-$var reg 1 7 negativeedge $end
-$var reg 1 6 positiveedge $end
-$var reg 1 Q synchronizer0 $end
-$var reg 1 R synchronizer1 $end
+$var wire 1 % clk $end
+$var wire 1 $ noisysignal $end
+$var reg 1 9 conditioned $end
+$var reg 3 Q counter [2:0] $end
+$var reg 1 8 negativeedge $end
+$var reg 1 7 positiveedge $end
+$var reg 1 R synchronizer0 $end
+$var reg 1 S synchronizer1 $end
 $upscope $end
 $scope module miso_buff $end
-$var wire 1 $ clk $end
-$var wire 1 * d $end
-$var wire 1 - enable $end
-$var reg 1 3 q $end
+$var wire 1 % clk $end
+$var wire 1 + d $end
+$var wire 1 . enable $end
+$var reg 1 4 q $end
 $upscope $end
 $upscope $end
 $scope module inWave $end
-$var wire 16 S dataIn [15:0] $end
-$var wire 1 % enable $end
-$var wire 1 ' sclk $end
+$var wire 16 T dataIn [15:0] $end
+$var wire 1 & enable $end
+$var wire 1 ( sclk $end
+$var reg 1 $ actualCS $end
 $var reg 1 # dataOut $end
-$var reg 5 T pos [4:0] $end
+$var reg 5 U pos [4:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-b1111 T
-b101011011110101 S
+b1111 U
+b101011011110101 T
+0S
 0R
-0Q
-b0 P
+b0 Q
+0P
 0O
-0N
-b0 M
+b0 N
+0M
 0L
-0K
-b0 J
-xI
-b101 H
+b0 K
+xJ
+b101 I
+xH
 xG
-xF
-b0 E
-xD
+b0 F
+xE
+bx D
 bx C
 bx B
 bx A
@@ -151,14 +154,14 @@ bx @
 bx ?
 bx >
 bx =
-bx <
-x;
+x<
+bx ;
 bx :
-bx 9
+x9
 x8
 x7
-x6
-bx 5
+bx 6
+x5
 x4
 x3
 x2
@@ -167,1649 +170,1681 @@ x0
 x/
 x.
 x-
-x,
-bx +
+bx ,
+x+
 x*
-x)
-bz (
-0'
-x&
-1%
-0$
+bz )
+0(
+x'
+1&
+0%
+x$
 0#
 x"
 bz !
 $end
 #10
-xK
-b1 J
-b1 M
-1Q
-b1 P
-1$
-#20
-0$
-#30
-1R
-b10 P
-b10 M
 xL
-b10 J
-1$
-#40
-0$
-#50
-b11 J
-b11 M
-b11 P
-1$
-#60
-0$
-#70
-18
-b0 P
-0.
-b0 M
-b0 J
-1$
-#80
-0$
-#90
-b1 J
-0-
-0,
-07
-06
-1$
-#100
-0$
-1'
-#110
-1N
-b10 J
-1$
-#120
-0$
-#130
-b11 J
-1O
-1$
-#140
-0$
-#150
-b1 M
-b0 J
-1$
-#160
-0$
-#170
-b1 J
-b10 M
-1$
-#180
-0$
-#190
-b11 M
-b10 J
-1$
-#200
+b1 K
+b1 N
+xR
+b1 Q
+1%
+#20
 0%
-0$
-0'
+#30
+xS
+b10 Q
+b10 N
+xM
+b10 K
+1%
+#40
+0%
+#50
+b11 K
+b11 N
+b11 Q
+1%
+#60
+0%
+#70
+b0 Q
+0/
+b0 N
+b0 K
+1%
+#80
+0%
+#90
+b1 K
+0.
+0-
+b1 Q
+1%
+#100
+0%
+1(
+#110
+b10 Q
+1O
+b10 K
+1%
+#120
+0%
+#130
+b11 K
+1P
+b11 Q
+1%
+#140
+0%
+#150
+b0 Q
+b1 N
+b0 K
+1%
+#160
+0%
+#170
+b1 K
+b10 N
+b1 Q
+1%
+#180
+0%
+#190
+b10 Q
+b11 N
+b10 K
+1%
+#200
+0&
+1$
+0%
+0(
 #210
-b1 E
-0I
+b1 F
 z"
-02
-0)
-04
-0;
-b11 J
-0N
-1.
-1,
-b0 M
-0Q
-1$
+03
+0*
+05
+0<
+b11 K
+0O
+1/
+1-
+b0 N
+1R
+b11 Q
+1%
 #220
-0$
+0%
 #230
-0R
-0O
-0,
-b0 J
-0D
-bx0 +
-bx0 <
-bx0 ?
-bx0 B
-bx0 C
-1$
+1S
+b0 Q
+0P
+0-
+b0 K
+bx ,
+bx =
+bx @
+bx C
+bx D
+1%
 #240
-0$
+0%
 #250
-b1 J
-b1 M
-b1 P
-1$
+b1 K
+b1 N
+b1 Q
+1%
 #260
-0$
+0%
 #270
-b10 P
-b10 M
-b10 J
-1$
+b10 Q
+b10 N
+b10 K
+1%
 #280
-0$
+0%
 #290
-b11 J
-b11 M
-b11 P
-1$
+b11 K
+b11 N
+b11 Q
+1%
 #300
-0$
-1'
+0%
+1(
 #310
-08
-17
-b0 P
-1N
-0.
-1-
-b0 M
-b0 J
-1$
+19
+b0 Q
+1O
+0/
+1.
+b0 N
+b0 K
+1%
 #320
-0$
+0%
 #330
-b1 J
-1O
-0-
+b1 K
+1P
+0.
+08
 07
-1$
+1%
 #340
-0$
+0%
 #350
-b1 M
-b10 J
-1$
+b1 N
+b10 K
+1%
 #360
-0$
+0%
 #370
-b11 J
-b10 M
-1$
+b11 K
+b10 N
+1%
 #380
-0$
+0%
 #390
-b11 M
-b0 J
-1$
+b11 N
+b0 K
+1%
 #400
-0&
-b1110 T
-0$
 0'
+b1110 U
+0$
+0%
+0(
 #410
-1I
-b10 E
-0K
-b1 J
-0N
-1.
-1,
-b0 M
-1$
+0J
+b10 F
+0L
+b1 K
+0O
+1/
+1-
+b0 N
+0R
+1%
 #420
-0$
+0%
 #430
-0O
-0,
-0L
-b10 J
-bx0 +
-bx0 <
-bx0 ?
-bx0 B
-bx0 C
-1$
+0S
+0P
+0-
+0M
+b10 K
+bx ,
+bx =
+bx @
+bx C
+bx D
+1%
 #440
-0$
+0%
 #450
-b11 J
-b1 M
-1$
+b11 K
+b1 N
+b1 Q
+1%
 #460
-0$
+0%
 #470
-b10 M
-01
-b0 J
-1$
+b10 Q
+b10 N
+02
+b0 K
+1%
 #480
-0$
+0%
 #490
+01
 00
-0/
-b11 M
-1$
+b11 N
+b11 Q
+1%
 #500
-0$
-1'
+0%
+1(
 #510
-1N
-0.
-1-
-b0 M
-1$
+09
+18
+b0 Q
+1O
+0/
+1.
+b0 N
+1%
 #520
-0$
+0%
 #530
-1O
-0-
-1$
+1P
+0.
+08
+1%
 #540
-0$
+0%
 #550
-b1 M
-1$
+b1 N
+1%
 #560
-0$
+0%
 #570
-b10 M
-1$
+b10 N
+1%
 #580
-0$
+0%
 #590
-b11 M
-1$
+b11 N
+1%
 #600
-b1101 T
+b1101 U
 1#
-0$
-0'
+0%
+0(
 #610
-b11 E
-0N
-1.
-1,
-b0 M
-1$
+1J
+b1 F
+0O
+1/
+1-
+b0 N
+1%
 #620
-0$
+0%
 #630
-0O
-0,
-bx00 +
-bx00 <
-bx00 ?
-bx00 B
-bx00 C
-1$
+0P
+0-
+0E
+bx0 ,
+bx0 =
+bx0 @
+bx0 C
+bx0 D
+1%
 #640
-0$
+0%
 #650
-b1 M
-1$
+b1 N
+1%
 #660
-0$
+0%
 #670
-b10 M
-1$
+b10 N
+1%
 #680
-0$
+0%
 #690
-b11 M
-1$
+b11 N
+1%
 #700
-1&
-0$
 1'
+0%
+1(
 #710
-1N
-0.
-1-
-b0 M
-1K
-1$
+1O
+0/
+1.
+b0 N
+1L
+1%
 #720
-0$
+0%
 #730
-1L
-1O
-0-
-1$
+1M
+1P
+0.
+1%
 #740
-0$
+0%
 #750
-b1 M
-b1 J
-1$
+b1 N
+b1 K
+1%
 #760
-0$
+0%
 #770
-b10 J
-b10 M
-1$
+b10 K
+b10 N
+1%
 #780
-0$
+0%
 #790
-b11 M
-b11 J
-1$
+b11 N
+b11 K
+1%
 #800
-b1100 T
+b1100 U
 0#
-0$
-0'
+0%
+0(
 #810
-b100 E
-11
+b10 F
+12
+10
+b0 K
+0O
 1/
-b0 J
-0N
-1.
-1,
-b0 M
-1$
+1-
+b0 N
+1%
 #820
-0$
+0%
 #830
-0O
-0,
-0/
-bx010 +
-bx010 <
-bx010 ?
-bx010 B
-bx010 C
-1$
+0P
+0-
+00
+1E
+bx01 ,
+bx01 =
+bx01 @
+bx01 C
+bx01 D
+1%
 #840
-0$
+0%
 #850
-b1 M
-1$
+b1 N
+1%
 #860
-0$
+0%
 #870
-b10 M
-1$
+b10 N
+1%
 #880
-0$
+0%
 #890
-b11 M
-1$
+b11 N
+1%
 #900
-0&
-0$
-1'
+0'
+0%
+1(
 #910
-1N
-0.
-1-
-b0 M
-0K
-1$
+1O
+0/
+1.
+b0 N
+0L
+1%
 #920
-0$
+0%
 #930
-0L
-1O
-0-
-1$
+0M
+1P
+0.
+1%
 #940
-0$
+0%
 #950
-b1 M
-b1 J
-1$
+b1 N
+b1 K
+1%
 #960
-0$
+0%
 #970
-b10 J
-b10 M
-1$
+b10 K
+b10 N
+1%
 #980
-0$
+0%
 #990
-b11 M
-b11 J
-1$
+b11 N
+b11 K
+1%
 #1000
-b1011 T
+b1011 U
 1#
-0$
-0'
+0%
+0(
 #1010
-b101 E
-01
-10
-b0 J
-0N
-1.
-1,
-b0 M
-1$
+b11 F
+02
+11
+b0 K
+0O
+1/
+1-
+b0 N
+1%
 #1020
-0$
+0%
 #1030
-0O
-0,
-00
-bx0100 +
-bx0100 <
-bx0100 ?
-bx0100 B
-bx0100 C
-1$
+0P
+0-
+01
+0E
+bx010 ,
+bx010 =
+bx010 @
+bx010 C
+bx010 D
+1%
 #1040
-0$
+0%
 #1050
-b1 M
-1$
+b1 N
+1%
 #1060
-0$
+0%
 #1070
-b10 M
-1$
+b10 N
+1%
 #1080
-0$
+0%
 #1090
-b11 M
-1$
+b11 N
+1%
 #1100
-1&
-0$
 1'
+0%
+1(
 #1110
-1N
-0.
-1-
-b0 M
-1K
-1$
+1O
+0/
+1.
+b0 N
+1L
+1%
 #1120
-0$
+0%
 #1130
-1L
-1O
-0-
-1$
+1M
+1P
+0.
+1%
 #1140
-0$
+0%
 #1150
-b1 M
-b1 J
-1$
+b1 N
+b1 K
+1%
 #1160
-0$
+0%
 #1170
-b10 J
-b10 M
-1$
+b10 K
+b10 N
+1%
 #1180
-0$
+0%
 #1190
-b11 M
-b11 J
-1$
+b11 N
+b11 K
+1%
 #1200
-b1010 T
+b1010 U
 0#
-0$
-0'
+0%
+0(
 #1210
-b110 E
-11
+b100 F
+12
+10
+b0 K
+0O
 1/
-b0 J
-0N
-1.
-1,
-b0 M
-1$
+1-
+b0 N
+1%
 #1220
-0$
+0%
 #1230
-0O
-0,
-0/
-bx01010 +
-bx01010 <
-bx01010 ?
-bx01010 B
-bx01010 C
-1$
+0P
+0-
+00
+1E
+bx0101 ,
+bx0101 =
+bx0101 @
+bx0101 C
+bx0101 D
+1%
 #1240
-0$
+0%
 #1250
-b1 M
-1$
+b1 N
+1%
 #1260
-0$
+0%
 #1270
-b10 M
-1$
+b10 N
+1%
 #1280
-0$
+0%
 #1290
-b11 M
-1$
+b11 N
+1%
 #1300
-0&
-0$
-1'
+0'
+0%
+1(
 #1310
-1N
-0.
-1-
-b0 M
-0K
-1$
+1O
+0/
+1.
+b0 N
+0L
+1%
 #1320
-0$
+0%
 #1330
-0L
-1O
-0-
-1$
+0M
+1P
+0.
+1%
 #1340
-0$
+0%
 #1350
-b1 M
-b1 J
-1$
+b1 N
+b1 K
+1%
 #1360
-0$
+0%
 #1370
-b10 J
-b10 M
-1$
+b10 K
+b10 N
+1%
 #1380
-0$
+0%
 #1390
-b11 M
-b11 J
-1$
+b11 N
+b11 K
+1%
 #1400
-b1001 T
+b1001 U
 1#
-0$
-0'
+0%
+0(
 #1410
-b111 E
-01
-10
-b0 J
-0N
-1.
-1,
-b0 M
-1$
+b101 F
+02
+11
+b0 K
+0O
+1/
+1-
+b0 N
+1%
 #1420
-0$
+0%
 #1430
-0O
-0,
-00
-bx010100 +
-bx010100 <
-bx010100 ?
-bx010100 B
-bx010100 C
-1$
+0P
+0-
+01
+0E
+bx01010 ,
+bx01010 =
+bx01010 @
+bx01010 C
+bx01010 D
+1%
 #1440
-0$
+0%
 #1450
-b1 M
-1$
+b1 N
+1%
 #1460
-0$
+0%
 #1470
-b10 M
-1$
+b10 N
+1%
 #1480
-0$
+0%
 #1490
-b11 M
-1$
+b11 N
+1%
 #1500
-1&
-0$
 1'
+0%
+1(
 #1510
-1N
-0.
-1-
-b0 M
-1K
-1$
+1O
+0/
+1.
+b0 N
+1L
+1%
 #1520
-0$
+0%
 #1530
-1L
-1O
-0-
-1$
+1M
+1P
+0.
+1%
 #1540
-0$
+0%
 #1550
-b1 M
-b1 J
-1$
+b1 N
+b1 K
+1%
 #1560
-0$
+0%
 #1570
-b10 J
-b10 M
-1$
+b10 K
+b10 N
+1%
 #1580
-0$
+0%
 #1590
-b11 M
-b11 J
-1$
+b11 N
+b11 K
+1%
 #1600
-b1000 T
-0$
-0'
+b1000 U
+0%
+0(
 #1610
-b1000 E
-11
+b110 F
+12
+10
+b0 K
+0O
 1/
-b0 J
-0N
-1.
-1,
-b0 M
-1$
+1-
+b0 N
+1%
 #1620
-0$
+0%
 #1630
-0O
-0,
-0/
-bx0101010 +
-bx0101010 <
-bx0101010 ?
-bx0101010 B
-bx0101010 C
-1$
+0P
+0-
+00
+1E
+bx010101 ,
+bx010101 =
+bx010101 @
+bx010101 C
+bx010101 D
+1%
 #1640
-0$
+0%
 #1650
-b1 M
-1$
+b1 N
+1%
 #1660
-0$
+0%
 #1670
-b10 M
-1$
+b10 N
+1%
 #1680
-0$
+0%
 #1690
-b11 M
-1$
+b11 N
+1%
 #1700
-0$
-1'
+0%
+1(
 #1710
-1N
-0.
-1-
-b0 M
-1$
+1O
+0/
+1.
+b0 N
+1%
 #1720
-0$
+0%
 #1730
-1O
-0-
-1$
+1P
+0.
+1%
 #1740
-0$
+0%
 #1750
-b1 M
-1$
+b1 N
+1%
 #1760
-0$
+0%
 #1770
-b10 M
-1$
+b10 N
+1%
 #1780
-0$
+0%
 #1790
-b11 M
-1$
+b11 N
+1%
 #1800
-b111 T
+b111 U
 0#
-0$
-0'
+0%
+0(
 #1810
-b0 E
-b0 H
-0N
-1.
-1,
-b0 M
-1$
+b111 F
+0O
+1/
+1-
+b0 N
+1%
 #1820
-0$
+0%
 #1830
-0O
-0,
-0*
-b1010110 +
-b1010110 <
-b1010110 ?
-b1010110 B
-b1010110 C
-1$
+0P
+0-
+bx0101011 ,
+bx0101011 =
+bx0101011 @
+bx0101011 C
+bx0101011 D
+1%
 #1840
-0$
+0%
 #1850
-b1 M
-1$
+b1 N
+1%
 #1860
-0$
+0%
 #1870
-b10 M
-1$
+b10 N
+1%
 #1880
-0$
+0%
 #1890
-b11 M
-1$
+b11 N
+1%
 #1900
-0&
-0$
-1'
+0'
+0%
+1(
 #1910
-1N
-0.
-1-
-b0 M
-0K
-1$
+1O
+0/
+1.
+b0 N
+0L
+1%
 #1920
-0$
+0%
 #1930
-0L
-1O
-0-
-z"
-03
-1$
+0M
+1P
+0.
+1%
 #1940
-0$
+0%
 #1950
-b1 M
-b1 J
-1$
+b1 N
+b1 K
+1%
 #1960
-0$
+0%
 #1970
-b10 J
-b10 M
-1$
+b10 K
+b10 N
+1%
 #1980
-0$
+0%
 #1990
-b11 M
-b11 J
-1$
+b11 N
+b11 K
+1%
 #2000
-b110 T
+b110 U
 1#
-0$
-0'
+0%
+0(
 #2010
-1;
-0G
-b11 H
-b1 E
-01
-10
-b0 J
-0N
-1.
-1,
-b0 M
-1$
+1<
+b0 F
+b0 I
+02
+11
+b0 K
+0O
+1/
+1-
+b0 N
+1%
 #2020
-0$
+0%
 #2030
-b101100 :
-b101100 >
-b10101100 9
-b10101100 =
-0O
-0,
-00
-1*
-b10101100 +
-b10101100 <
-b10101100 ?
-b10101100 B
-b10101100 C
-1$
+b1010110 ;
+b1010110 ?
+b1010110 :
+b1010110 >
+0P
+0-
+01
+0+
+0E
+b1010110 ,
+b1010110 =
+b1010110 @
+b1010110 C
+b1010110 D
+1%
 #2040
-0$
+0%
 #2050
-b1 M
-1$
+b1 N
+1%
 #2060
-0$
+0%
 #2070
-b10 M
-1$
+b10 N
+1%
 #2080
-0$
+0%
 #2090
-b11 M
-1$
+b11 N
+1%
 #2100
-1&
-0$
 1'
+0%
+1(
 #2110
-1N
-0.
-1-
-b0 M
-1K
-1$
+1O
+0/
+1.
+b0 N
+1L
+1%
 #2120
-0$
+0%
 #2130
-1L
-1O
-0-
+1M
+1P
+0.
 z"
-13
-1$
-#2140
-0$
-#2150
-b1 M
-b1 J
-1$
-#2160
-0$
-#2170
-b10 J
-b10 M
-1$
-#2180
-0$
-#2190
-b11 M
-b11 J
-1$
-#2200
-b101 T
-0$
-0'
-#2210
-b10 E
-1G
-0;
-11
-1/
-b0 J
-0N
-1.
-1,
-b0 M
-1$
-#2220
-0$
-#2230
-0O
-0,
-0/
-0*
-b1011010 +
-b1011010 <
-b1011010 ?
-b1011010 B
-b1011010 C
-1$
-#2240
-0$
-#2250
-b1 M
-1$
-#2260
-0$
-#2270
-b10 M
-1$
-#2280
-0$
-#2290
-b11 M
-1$
-#2300
-0$
-1'
-#2310
-1N
-0.
-1-
-b0 M
-1$
-#2320
-0$
-#2330
-1O
-0-
-z"
-03
-1$
-#2340
-0$
-#2350
-b1 M
-1$
-#2360
-0$
-#2370
-b10 M
-1$
-#2380
-0$
-#2390
-b11 M
-1$
-#2400
-b100 T
-0$
-0'
-#2410
-b11 E
-0N
-1.
-1,
-b0 M
-1$
-#2420
-0$
-#2430
-0O
-0,
-1*
-b10110110 +
-b10110110 <
-b10110110 ?
-b10110110 B
-b10110110 C
-1$
-#2440
-0$
-#2450
-b1 M
-1$
-#2460
-0$
-#2470
-b10 M
-1$
-#2480
-0$
-#2490
-b11 M
-1$
-#2500
-0$
-1'
-#2510
-1N
-0.
-1-
-b0 M
-1$
-#2520
-0$
-#2530
-1O
-0-
-z"
-13
-1$
-#2540
-0$
-#2550
-b1 M
-1$
-#2560
-0$
-#2570
-b10 M
-1$
-#2580
-0$
-#2590
-b11 M
-1$
-#2600
-b11 T
-0$
-0'
-#2610
-b100 E
-0N
-1.
-1,
-b0 M
-1$
-#2620
-0$
-#2630
-0O
-0,
-0*
-b1101110 +
-b1101110 <
-b1101110 ?
-b1101110 B
-b1101110 C
-1$
-#2640
-0$
-#2650
-b1 M
-1$
-#2660
-0$
-#2670
-b10 M
-1$
-#2680
-0$
-#2690
-b11 M
-1$
-#2700
-0$
-1'
-#2710
-1N
-0.
-1-
-b0 M
-1$
-#2720
-0$
-#2730
-1O
-0-
-z"
-03
-1$
-#2740
-0$
-#2750
-b1 M
-1$
-#2760
-0$
-#2770
-b10 M
-1$
-#2780
-0$
-#2790
-b11 M
-1$
-#2800
-b10 T
-0#
-0$
-0'
-#2810
-b101 E
-0N
-1.
-1,
-b0 M
-1$
-#2820
-0$
-#2830
-0O
-0,
-1*
-b11011110 +
-b11011110 <
-b11011110 ?
-b11011110 B
-b11011110 C
-1$
-#2840
-0$
-#2850
-b1 M
-1$
-#2860
-0$
-#2870
-b10 M
-1$
-#2880
-0$
-#2890
-b11 M
-1$
-#2900
-0&
-0$
-1'
-#2910
-1N
-0.
-1-
-b0 M
-0K
-1$
-#2920
-0$
-#2930
-0L
-1O
-0-
-z"
-13
-1$
-#2940
-0$
-#2950
-b1 M
-b1 J
-1$
-#2960
-0$
-#2970
-b10 J
-b10 M
-1$
-#2980
-0$
-#2990
-b11 M
-b11 J
-1$
-#3000
-b1 T
-1#
-0$
-0'
-#3010
-b110 E
-01
-10
-b0 J
-0N
-1.
-1,
-b0 M
-1$
-#3020
-0$
-#3030
-0O
-0,
-00
-b10111100 +
-b10111100 <
-b10111100 ?
-b10111100 B
-b10111100 C
-1$
-#3040
-0$
-#3050
-b1 M
-1$
-#3060
-0$
-#3070
-b10 M
-1$
-#3080
-0$
-#3090
-b11 M
-1$
-#3100
-1&
-0$
-1'
-#3110
-1N
-0.
-1-
-b0 M
-1K
-1$
-#3120
-0$
-#3130
-1L
-1O
-0-
-1$
-#3140
-0$
-#3150
-b1 M
-b1 J
-1$
-#3160
-0$
-#3170
-b10 J
-b10 M
-1$
-#3180
-0$
-#3190
-b11 M
-b11 J
-1$
-#3200
-b1111 T
-0#
-0$
-0'
-#3210
-b111 E
-11
-1/
-b0 J
-0N
-1.
-1,
-b0 M
-1$
-#3220
-0$
-#3230
-0O
-0,
-0/
-0*
-b1111010 +
-b1111010 <
-b1111010 ?
-b1111010 B
-b1111010 C
-1$
-#3240
-0$
-#3250
-b1 M
-1$
-#3260
-0$
-#3270
-b10 M
-1$
-#3280
-0$
-#3290
-b11 M
-1$
-#3300
-0&
-0$
-1'
-#3310
-1N
-0.
-1-
-b0 M
-0K
-1$
-#3320
-0$
-#3330
-0L
-1O
-0-
-z"
-03
-1$
-#3340
-0$
-#3350
-b1 M
-b1 J
-1$
-#3360
-0$
-#3370
-b10 J
-b10 M
-1$
-#3380
-0$
-#3390
-b11 M
-b11 J
-1$
-#3400
-b1110 T
-0$
-0'
-#3410
-b1000 E
-b100 H
-01
-10
-b0 J
-0N
-1.
-1,
-b0 M
-1$
-#3420
-0$
-#3430
-0O
-0,
-00
-1*
-b11110100 +
-b11110100 <
-b11110100 ?
-b11110100 B
-b11110100 C
-1$
-#3440
-0$
-#3450
-b1 M
-1$
-#3460
-0$
-#3470
-b10 M
-1$
-#3480
-0$
-#3490
-b11 M
-1$
-#3500
-0$
-1'
-#3510
-1N
-0.
-1-
-b0 M
-1$
-#3520
-0$
-#3530
-1O
-0-
-z"
-13
-1$
-#3540
-0$
-#3550
-b1 M
-1$
-#3560
-0$
-#3570
-b10 M
-1$
-#3580
-0$
-#3590
-b11 M
-1$
-#3600
-b1101 T
-1#
-0$
-0'
-#3610
-14
-b101 H
-b0 E
-0N
-1.
-1,
-b0 M
-1$
-#3620
-0$
-#3630
-0O
-0,
-b11101000 +
-b11101000 <
-b11101000 ?
-b11101000 B
-b11101000 C
-1$
-#3640
-0$
-#3650
-b1 M
-b11101000 5
-b11101000 @
-b11101000 A
-1$
-#3660
-0$
-#3670
-b10 M
-1$
-#3680
-0$
-#3690
-b11 M
-1$
-#3700
-1&
-0$
-1'
-#3710
-1N
-0.
-1-
-b0 M
-1K
-1$
-#3720
-0$
-#3730
-1L
-1O
-0-
-1$
-#3740
-0$
-#3750
-b1 M
-b1 J
-1$
-#3760
-0$
-#3770
-b10 J
-b10 M
-1$
-#3780
-0$
-#3790
-b11 M
-b11 J
-1$
-#3800
-b1100 T
-0#
-0$
-0'
-#3810
-b1 E
 04
-11
-1/
-b0 J
-0N
-1.
-1,
-b0 M
-1$
-#3820
-0$
-#3830
-0O
-0,
-0/
-b11010010 +
-b11010010 <
-b11010010 ?
-b11010010 B
-b11010010 C
-1$
-#3840
-0$
-#3850
-b1 M
-1$
-#3860
-0$
-#3870
-b10 M
-1$
-#3880
-0$
-#3890
-b11 M
-1$
-#3900
-0&
-0$
-1'
-#3910
-1N
-0.
-1-
-b0 M
-0K
-1$
-#3920
-0$
-#3930
-0L
-1O
-0-
-1$
-#3940
-0$
-#3950
-b1 M
-b1 J
-1$
-#3960
-0$
-#3970
-b10 J
-b10 M
-1$
-#3980
-0$
-#3990
-b11 M
-b11 J
-1$
-#4000
-b1011 T
-1#
-0$
-0'
-#4010
-b10 E
-01
+1%
+#2140
+0%
+#2150
+b1 N
+b1 K
+1%
+#2160
+0%
+#2170
+b10 K
+b10 N
+1%
+#2180
+0%
+#2190
+b11 N
+b11 K
+1%
+#2200
+b101 U
+0%
+0(
+#2210
+b1 F
+0H
+b11 I
+12
 10
-b0 J
-0N
-1.
-1,
-b0 M
-1$
-#4020
-0$
-#4030
+b0 K
 0O
-0,
-00
-b10100100 +
-b10100100 <
-b10100100 ?
-b10100100 B
-b10100100 C
-1$
-#4040
-0$
-#4050
-b1 M
-1$
-#4060
-0$
-#4070
-b10 M
-1$
-#4080
-0$
-#4090
-b11 M
-1$
-#4100
-1&
-0$
-1'
-#4110
-1N
-0.
+1/
 1-
-b0 M
-1K
-1$
-#4120
-0$
-#4130
-1L
-1O
+b0 N
+1%
+#2220
+0%
+#2230
+b101101 ;
+b101101 ?
+b10101101 :
+b10101101 >
+0P
 0-
-1$
+00
+1E
+1+
+b10101101 ,
+b10101101 =
+b10101101 @
+b10101101 C
+b10101101 D
+1%
+#2240
+0%
+#2250
+b1 N
+1%
+#2260
+0%
+#2270
+b10 N
+1%
+#2280
+0%
+#2290
+b11 N
+1%
+#2300
+0%
+1(
+#2310
+1O
+0/
+1.
+b0 N
+1%
+#2320
+0%
+#2330
+1P
+0.
+z"
+14
+1%
+#2340
+0%
+#2350
+b1 N
+1%
+#2360
+0%
+#2370
+b10 N
+1%
+#2380
+0%
+#2390
+b11 N
+1%
+#2400
+b100 U
+0%
+0(
+#2410
+0<
+b10 F
+1H
+0O
+1/
+1-
+b0 N
+1%
+#2420
+0%
+#2430
+0P
+0-
+0+
+b1011011 ,
+b1011011 =
+b1011011 @
+b1011011 C
+b1011011 D
+1%
+#2440
+0%
+#2450
+b1 N
+1%
+#2460
+0%
+#2470
+b10 N
+1%
+#2480
+0%
+#2490
+b11 N
+1%
+#2500
+0%
+1(
+#2510
+1O
+0/
+1.
+b0 N
+1%
+#2520
+0%
+#2530
+1P
+0.
+z"
+04
+1%
+#2540
+0%
+#2550
+b1 N
+1%
+#2560
+0%
+#2570
+b10 N
+1%
+#2580
+0%
+#2590
+b11 N
+1%
+#2600
+b11 U
+0%
+0(
+#2610
+b11 F
+0O
+1/
+1-
+b0 N
+1%
+#2620
+0%
+#2630
+0P
+0-
+1+
+b10110111 ,
+b10110111 =
+b10110111 @
+b10110111 C
+b10110111 D
+1%
+#2640
+0%
+#2650
+b1 N
+1%
+#2660
+0%
+#2670
+b10 N
+1%
+#2680
+0%
+#2690
+b11 N
+1%
+#2700
+0%
+1(
+#2710
+1O
+0/
+1.
+b0 N
+1%
+#2720
+0%
+#2730
+1P
+0.
+z"
+14
+1%
+#2740
+0%
+#2750
+b1 N
+1%
+#2760
+0%
+#2770
+b10 N
+1%
+#2780
+0%
+#2790
+b11 N
+1%
+#2800
+b10 U
+0#
+0%
+0(
+#2810
+b100 F
+0O
+1/
+1-
+b0 N
+1%
+#2820
+0%
+#2830
+0P
+0-
+0+
+b1101111 ,
+b1101111 =
+b1101111 @
+b1101111 C
+b1101111 D
+1%
+#2840
+0%
+#2850
+b1 N
+1%
+#2860
+0%
+#2870
+b10 N
+1%
+#2880
+0%
+#2890
+b11 N
+1%
+#2900
+0'
+0%
+1(
+#2910
+1O
+0/
+1.
+b0 N
+0L
+1%
+#2920
+0%
+#2930
+0M
+1P
+0.
+z"
+04
+1%
+#2940
+0%
+#2950
+b1 N
+b1 K
+1%
+#2960
+0%
+#2970
+b10 K
+b10 N
+1%
+#2980
+0%
+#2990
+b11 N
+b11 K
+1%
+#3000
+b1 U
+1#
+0%
+0(
+#3010
+b101 F
+02
+11
+b0 K
+0O
+1/
+1-
+b0 N
+1%
+#3020
+0%
+#3030
+0P
+0-
+01
+1+
+0E
+b11011110 ,
+b11011110 =
+b11011110 @
+b11011110 C
+b11011110 D
+1%
+#3040
+0%
+#3050
+b1 N
+1%
+#3060
+0%
+#3070
+b10 N
+1%
+#3080
+0%
+#3090
+b11 N
+1%
+#3100
+1'
+0%
+1(
+#3110
+1O
+0/
+1.
+b0 N
+1L
+1%
+#3120
+0%
+#3130
+1M
+1P
+0.
+z"
+14
+1%
+#3140
+0%
+#3150
+b1 N
+b1 K
+1%
+#3160
+0%
+#3170
+b10 K
+b10 N
+1%
+#3180
+0%
+#3190
+b11 N
+b11 K
+1%
+#3200
+b1111 U
+0#
+0%
+0(
+#3210
+b110 F
+12
+10
+b0 K
+0O
+1/
+1-
+b0 N
+1%
+#3220
+0%
+#3230
+0P
+0-
+00
+1E
+b10111101 ,
+b10111101 =
+b10111101 @
+b10111101 C
+b10111101 D
+1%
+#3240
+0%
+#3250
+b1 N
+1%
+#3260
+0%
+#3270
+b10 N
+1%
+#3280
+0%
+#3290
+b11 N
+1%
+#3300
+0'
+0%
+1(
+#3310
+1O
+0/
+1.
+b0 N
+0L
+1%
+#3320
+0%
+#3330
+0M
+1P
+0.
+1%
+#3340
+0%
+#3350
+b1 N
+b1 K
+1%
+#3360
+0%
+#3370
+b10 K
+b10 N
+1%
+#3380
+0%
+#3390
+b11 N
+b11 K
+1%
+#3400
+b1110 U
+0%
+0(
+#3410
+b111 F
+b100 I
+02
+11
+b0 K
+0O
+1/
+1-
+b0 N
+1%
+#3420
+0%
+#3430
+0P
+0-
+01
+0+
+0E
+b1111010 ,
+b1111010 =
+b1111010 @
+b1111010 C
+b1111010 D
+1%
+#3440
+0%
+#3450
+b1 N
+1%
+#3460
+0%
+#3470
+b10 N
+1%
+#3480
+0%
+#3490
+b11 N
+1%
+#3500
+0%
+1(
+#3510
+1O
+0/
+1.
+b0 N
+1%
+#3520
+0%
+#3530
+1P
+0.
+z"
+04
+1%
+#3540
+0%
+#3550
+b1 N
+1%
+#3560
+0%
+#3570
+b10 N
+1%
+#3580
+0%
+#3590
+b11 N
+1%
+#3600
+b1101 U
+1#
+0%
+0(
+#3610
+15
+b101 I
+b0 F
+0O
+1/
+1-
+b0 N
+1%
+#3620
+0%
+#3630
+0P
+0-
+1+
+b11110100 ,
+b11110100 =
+b11110100 @
+b11110100 C
+b11110100 D
+1%
+#3640
+0%
+#3650
+b1 N
+b11110100 6
+b11110100 A
+b11110100 B
+1%
+#3660
+0%
+#3670
+b10 N
+1%
+#3680
+0%
+#3690
+b11 N
+1%
+#3700
+1'
+0%
+1(
+#3710
+1O
+0/
+1.
+b0 N
+1L
+1%
+#3720
+0%
+#3730
+1M
+1P
+0.
+z"
+14
+1%
+#3740
+0%
+#3750
+b1 N
+b1 K
+1%
+#3760
+0%
+#3770
+b10 K
+b10 N
+1%
+#3780
+0%
+#3790
+b11 N
+b11 K
+1%
+#3800
+b1100 U
+0#
+0%
+0(
+#3810
+b1 F
+05
+12
+10
+b0 K
+0O
+1/
+1-
+b0 N
+1%
+#3820
+0%
+#3830
+0P
+0-
+00
+1E
+b11101001 ,
+b11101001 =
+b11101001 @
+b11101001 C
+b11101001 D
+1%
+#3840
+0%
+#3850
+b1 N
+1%
+#3860
+0%
+#3870
+b10 N
+1%
+#3880
+0%
+#3890
+b11 N
+1%
+#3900
+0'
+0%
+1(
+#3910
+1O
+0/
+1.
+b0 N
+0L
+1%
+#3920
+0%
+#3930
+0M
+1P
+0.
+1%
+#3940
+0%
+#3950
+b1 N
+b1 K
+1%
+#3960
+0%
+#3970
+b10 K
+b10 N
+1%
+#3980
+0%
+#3990
+b11 N
+b11 K
+1%
+#4000
+b1011 U
+1#
+0%
+0(
+#4010
+b10 F
+02
+11
+b0 K
+0O
+1/
+1-
+b0 N
+1%
+#4020
+0%
+#4030
+0P
+0-
+01
+0E
+b11010010 ,
+b11010010 =
+b11010010 @
+b11010010 C
+b11010010 D
+1%
+#4040
+0%
+#4050
+b1 N
+1%
+#4060
+0%
+#4070
+b10 N
+1%
+#4080
+0%
+#4090
+b11 N
+1%
+#4100
+1'
+0%
+1(
+#4110
+1O
+0/
+1.
+b0 N
+1L
+1%
+#4120
+0%
+#4130
+1M
+1P
+0.
+1%
 #4140
-0$
+0%
 #4150
-b1 M
-b1 J
-1$
+b1 N
+b1 K
+1%
 #4160
-0$
+0%
 #4170
-b10 J
-b10 M
-1$
+b10 K
+b10 N
+1%
 #4180
-0$
+0%
 #4190
-b11 M
-b11 J
-1$
+b11 N
+b11 K
+1%
 #4200
 0#
-0$
-0'
+0%
+0(
