@@ -27,67 +27,50 @@ module spimemory_test();
 
 
 	initial begin
-	mosi_pin <= dataOut;
     $dumpfile("spi.vcd"); //Creating .vcd file for timing analysis
     $dumpvars;
-	cs_pin <= 1;#100
-	$display("STARTING NOW!");
+
+	cs_pin <= 1;#200
+	$display("STARTING NOW! Mosi=%b",dataOut);
 	cs_pin <= 0;#200
-	mosi_pin <= dataOut;
-	//mosi_pin = write_op[0]; #100
-	$display(dut.addr_we);
-	$display(dut.data_mem.address);#200
-	mosi_pin <= dataOut;
-	//mosi_pin = write_op[1]; #100
-	//mosi_pin = write_op[2]; #100
-	//mosi_pin = write_op[3]; #100
-	$display(dut.addr_we);
-	$display(dut.data_mem.address);#200
-	mosi_pin <= dataOut;
-	//mosi_pin = write_op[4]; #100
-	//mosi_pin = write_op[5]; #100
-	$display(dut.addr_we);
-	$display(dut.data_mem.address);#200
-	mosi_pin <= dataOut;
-	//mosi_pin = write_op[6]; #100
-	//mosi_pin = write_op[7]; #100
-	$display(dut.addr_we);
-	$display(dut.data_mem.address);#200
-	mosi_pin <= dataOut;
-	//mosi_pin = write_op[8]; #100
-	$display("Address: %b",dut.addr_we);
-	$display("DatMem: %b",dut.dm_we);#200
-	mosi_pin <= dataOut;
-	//mosi_pin = write_op[9]; #100
-	$display("DatMem: %b",dut.dm_we);
-	$display("ADDRESS: %b",dut.data_mem.address);#200
-	mosi_pin <= dataOut;
-	//mosi_pin = write_op[10]; #100
-	$display("DatMem: %b",dut.dm_we);
-	$display("ADDRESS: %b",dut.data_mem.address);#200
-	mosi_pin <= dataOut;
-	//mosi_pin = write_op[11]; #100
-	$display("DatMem: %b",dut.dm_we);
-	$display("ADDRESS: %b",dut.data_mem.address);#200
-	mosi_pin <= dataOut;
-	$display("DatMem: %b",dut.dm_we);
-	$display("ADDRESS: %b",dut.data_mem.address);#200
-	//mosi_pin = write_op[13]; #100
-	mosi_pin <= dataOut;
-	$display("DatMem: %b",dut.dm_we);
-	$display("ADDRESS: %b",dut.data_mem.address);#200
-	//mosi_pin = write_op[14]; #100
-	mosi_pin <= dataOut;
-	$display("DatMem: %b",dut.dm_we);
-	$display("ADDRESS: %b",dut.data_mem.address);#200
-	//mosi_pin = write_op[15]; #100
-	mosi_pin <= dataOut;
-	$display("DatMem: %b",dut.dm_we);
-	$display("ADDRESS: %b",dut.data_mem.address);
-	#200 $display("DatMem: %b",dut.dm_we);
-	#200 $display("DatMem: %b",dut.dm_we);
-	#200 $display("DatMem: %b",dut.dm_we);
-	#200 $display("DatMem: %b",dut.dm_we);
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+	mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
+		mosi_pin <= dataOut;#100
 	$display("Address: %b",dut.data_mem.address);
 	//#10000;
 	$finish;

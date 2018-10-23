@@ -17,7 +17,7 @@ module fsm
   );
       reg[2:0] state;
       initial state = `OFF;
-      parameter waittime = 7;
+      parameter waittime = 8;
       reg[4:0] counter;
       initial counter <= 0;
       reg miOut, moMem, turnOn;
@@ -47,7 +47,7 @@ module fsm
           $display("Turn on = %b",turnOn);
         end
         $display("In state OFF going to address");
-        if (counter == 3'd7)begin
+        if (counter == waittime)begin
           state = `ADDRESS;
           $display("counter: %b",counter);
         end
@@ -71,7 +71,7 @@ module fsm
           miOut <= 1;
           $display("In state of miso_out");
         end
-        if (counter == 3'd7)
+        if (counter == waittime)
           state <= `OFF;
       end
 
