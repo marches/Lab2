@@ -67,7 +67,7 @@ module spiMemory
     					.address(address),	// MSB OF INPUT BECOMES DM_WE
     					.writeEnable(dm_we),
    						.dataIn(shiftRegOutP));
-	dff #(1) miso_buff (.clk(clk), 
+	dff #(1) miso_buff (.clk(clk),
 						.enable(sclk_neg),
 						.d(shiftRegOutS),
 						.q(misoPreBufe));
@@ -76,7 +76,7 @@ module spiMemory
 						.d(shiftRegOutP),
 						.q(addressLatchOut));
 
-	fsm finite_state_m (.cs(cs_cond), 
+	fsm finite_state_m (.cs(cs_cond),
 						.clk(clk),
 						.sclk(sclk_pos),
 						.shiftRegOut0(shiftRegOutP[0]),

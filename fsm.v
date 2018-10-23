@@ -33,60 +33,73 @@ module fsm
       end
 
       always @(posedge sclk) begin
-
+      $display("Positive sclk edge");
       if (cs)begin
         state <= `OFF;
         turnOn <= 0;
+        $display("In state OFF");
       end
 
       else if (cs == 0 && state==`OFF)begin
         if (turnOn == 0)begin
-          counter <= 0;
-          turnOn <= 1;
+          counter = 0;
+          turnOn = 1;
+          $display("Turn on = %b",turnOn);
         end
+        $display("In state OFF going to address");
         if (counter == 3'd7)begin
-          state <= `ADDRESS;
+          state = `ADDRESS;
+          $display("counter: %b",counter);
         end
+        $display("counter: %b",counter);
       end
 
-      else if (state == `ADDRESS && shiftRegOut0 == 0)begin
+      else if (state == `ADDRESS && shiftRegOut0 == 1)begin
         state <= `MISO_REG;
+        $display("In state ADDRESS going to miso_reg");
       end
 
       else if (state == `MISO_REG)begin
         state <= `MISO_OUT;
         miOut <= 0;
+        $display("In state going to miso_out");
       end
 
       else if (state == `MISO_OUT)begin
         if (miOut == 0)begin
           counter <= 0;
           miOut <= 1;
+          $display("In state of miso_out");
         end
         if (counter == 3'd7)
           state <= `OFF;
       end
 
-      else if (state == `ADDRESS && shiftRegOut0 == 1)begin
+      else if (state == `ADDRESS && shiftRegOut0 == 0)begin
         state <= `MOSI_MEM;
         moMem <= 0;
+        $display("In state ADDRESS going to mosimem");
       end
 
       else if(state == `MOSI_MEM)begin
+        $display("In state of mosimem");
         if (moMem == 0) begin
           moMem <= 1;
           counter <= 0;
+          $display("MOSI counter: %b",counter);
         end
         if (counter == 3'd7)
           state <= `MOSI_WRI;
+          $display("MOSI counter: %b",counter);
       end
 
       else if (state == `MOSI_WRI)begin
+        $display("In state mosi_wri");
         state <= `OFF;
       end
       end
 
-  always @(posedge clk) begin
+  always @(posedge sclk) begin
   case (state)
     `ADDRESS:   begin add_WE <= 1; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
     `MISO_REG:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 1; MISO_Buff <= 0; end

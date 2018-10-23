@@ -23,8 +23,10 @@ module datamemory
     reg [width-1:0] memory [depth-1:0];
 
     always @(posedge clk) begin
-        if(writeEnable)
+        if(writeEnable)begin
+            $display("Write Enable: %b",writeEnable);
             memory[address] <= dataIn;
+            end
         dataOut <= memory[address];
     end
 

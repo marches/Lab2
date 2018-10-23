@@ -30,7 +30,6 @@ module testfsm();
     sclk = 1; #1000
 
     cs = 0;
-    shiftRegOut0 = 1;
 
 
     sclk = 0; #1000
