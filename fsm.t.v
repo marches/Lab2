@@ -3,16 +3,16 @@
 module testfsm();
 
   reg  cs;
-  reg clk;
   reg sclk;
   reg  shiftRegOut0;
   wire add_WE;
   wire DM_WE;
   wire SR_WE;
   wire MISO_Buff;
-  initial clk = 0;
-  always #10 clk = !clk;
-  initial shiftRegOut0 =1;
+
+  initial shiftRegOut0 = 1;
+  initial cs = 1;
+  initial sclk = 1;
 
 
   fsm fsm1(.cs(cs),
@@ -23,98 +23,207 @@ module testfsm();
             .DM_WE(DM_WE),
             .SR_WE(SR_WE),
             .MISO_Buff(MISO_Buff));
-    reg dutpassed;
+    
+
     initial begin
-    cs = 1;
-    sclk = 0; #1000
-    sclk = 1; #1000
 
-    cs = 0;
+    $dumpfile("fsm.vcd");
+    $dumpvars();
+
+    $display("Initial FMS State");
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    //  WRITE OP TSTING
+
+    shiftRegOut0 <= 0; 
+
+    sclk <= 0; 
+    cs <= 0; # 10
+    sclk = 1; # 10
+
+    $display("Testing Write Op");
 
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("addr |  DM  |  SR  |  BUFF");
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    sclk <= 0; # 10
+    sclk <= 1; # 10
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    sclk <= 0; # 10
+    sclk <= 1; # 10
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    sclk <= 0; # 10
+    sclk <= 1; # 10
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    sclk <= 0; # 10
+    sclk <= 1; # 10
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    sclk <= 0; # 10
+    sclk <= 1; # 10
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    sclk <= 0; # 10
+    sclk <= 1; # 10
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    sclk <=0; # 10
+    sclk = 1; # 10
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    sclk <= 0; # 10
+    sclk <= 1; # 10
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    sclk <= 0; # 10
+    sclk <= 1; # 10
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
+    $display(fsm1.state);
 
-    sclk = 0; #1000
-    sclk = 1; #1000
-    $display("%b   |  %b  |  %b  |  %b  ",add_WE,DM_WE,SR_WE,MISO_Buff);
-    cs = 1;
+    sclk <= 0; # 10
+    sclk <= 1; # 10
 
-    $finish;
+    $display(fsm1.state); 
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; 
+    cs <=1; #10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    //READ OP TESTING
+
+    shiftRegOut0 <= 1; 
+
+    sclk <= 0; 
+    cs <= 0; # 10
+    sclk = 1; # 10
+
+    $display("Testing Read Op");
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <=0; # 10
+    sclk = 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state); 
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; # 10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    sclk <= 0; 
+    cs <=1; #10
+    sclk <= 1; # 10
+
+    $display(fsm1.state);
+
+    $finish; 
 
     end
     endmodule
