@@ -37,6 +37,7 @@ module spiMemory
     wire[7:0] shiftRegOutP, dataMemOut, addressLatchOut;
     wire[6:0] address;
     wire shiftRegOutS, misoPreBufe;
+    wire[4:0] counter;
 
     assign address = addressLatchOut[6:0];
 
@@ -45,41 +46,47 @@ module spiMemory
     					.conditioned(mosi_cond),
     					.positiveedge(mosi_pos),
     					.negativeedge(mosi_neg));
+
     inputconditioner ic1 (.clk(clk),
     					.noisysignal(sclk_pin),
     					.conditioned(sclk_cond),
     					.positiveedge(sclk_pos),
     					.negativeedge(sclk_neg));
+
     inputconditioner ic2 (.clk(clk),
     					.noisysignal(cs_pin),
     					.conditioned(cs_cond),
     					.positiveedge(cs_pos),
     					.negativeedge(cs_neg));
-	shiftregister #(8) dut(.clk(clk),
+
+	shiftregister #(8) sr(.clk(clk),
     		           .peripheralClkEdge(sclk_pos),
      		           .parallelLoad(sr_we),
      		           .parallelDataIn(dataMemOut),
      		           .serialDataIn(mosi_cond),
      		           .parallelDataOut(shiftRegOutP),
      		           .serialDataOut(shiftRegOutS));
+
 	datamemory data_mem(.clk(clk),
     					.dataOut(dataMemOut),
     					.address(address),	// MSB OF INPUT BECOMES DM_WE
     					.writeEnable(dm_we),
    						.dataIn(shiftRegOutP));
+
 	dff #(1) miso_buff (.clk(clk),
 						.enable(sclk_neg),
 						.d(shiftRegOutS),
 						.q(misoPreBufe));
+    
 	dff #(8) addr_latch(.clk(clk),
 						.enable(addr_we),
 						.d(shiftRegOutP),
 						.q(addressLatchOut));
 
 	fsm finite_state_m (.cs(cs_cond),
-						.clk(clk),
 						.sclk(sclk_cond),
 						.shiftRegOut0(shiftRegOutP[0]),
+                        .counter(counter),
 						.add_WE(addr_we),
 						.DM_WE(dm_we),
 						.SR_WE(sr_we),

@@ -1,76 +1,137 @@
 
 `include "spimemory.v"
-`include "inputWave.v"
-
-
 
 module spimemory_test();
 
-	reg clk, sclk_pin, cs, mosi_pin;
-	wire dataOut,cs_pin;
-	always #10 clk = !clk;
-	always #100 sclk_pin = !sclk_pin;
+	reg clk, sclk_pin, cs_pin, mosi_pin;
 	wire miso_pin;
 	wire[3:0] leds;
-	parameter write_op = 16'b0101011011110101;
-	parameter read_op = 8'b01010111;
+	wire[4:0] counter;	//leftover for debug
 
 
+	always #10 clk = !clk;
+
+	parameter write_op = 16'b1111111101010101;
+	parameter read_op = 8'b11010101;
+
+	//mosi_pin is input
+	//miso_pin is output
 	spiMemory dut(.clk(clk), .sclk_pin(sclk_pin), .cs_pin(cs_pin), .miso_pin(miso_pin), .mosi_pin(mosi_pin), .leds(leds));
-	inputWave inWave(.dataIn(write_op),.sclk(sclk_pin),.enable(cs),.dataOut(dataOut),.actualCS(cs_pin));
-
-
 
 	initial sclk_pin = 0;
 	initial clk = 0;
-
+	initial cs_pin = 1;
+	initial mosi_pin = 0;
 
 	initial begin
-    $dumpfile("spi.vcd"); //Creating .vcd file for timing analysis
+
+    $dumpfile("spimemory.vcd"); //Creating .vcd file for timing analysis
     $dumpvars;
 
-	cs <= 1;#200
-	$display("STARTING NOW! Mosi=%b",dataOut);
-	cs <= 0;#200
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	mosi_pin <= dataOut;#100
-	$display("Address: %b",dut.data_mem.address);
+
+    // Write op
+    sclk_pin = 1; # 100
+    sclk_pin = 0;
+	cs_pin = 0;
+	mosi_pin = write_op[0]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[1]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[2]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[3]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[4]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[5]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[6]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[7]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[8]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[9]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[10]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[11]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[12]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[13]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[14]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = write_op[15]; # 100
+	sclk_pin = 1; # 100
+
+    cs_pin = 1; 
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+
+    // Read op
+    sclk_pin = 1; # 100
+    sclk_pin = 0;
+	cs_pin = 0;
+	mosi_pin = read_op[0]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = read_op[1]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = read_op[2]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = read_op[3]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = read_op[4]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = read_op[5]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = read_op[6]; # 100
+	sclk_pin = 1; # 100
+    sclk_pin = 0;
+	mosi_pin = read_op[7]; # 100
+
+	sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
 
 	$finish;
 
