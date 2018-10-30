@@ -168,7 +168,7 @@ module testshiftregister();
     //testing for 0 serial out and parallel loading
     if((parallelDataOut !== 8'b11111111) || (serialDataOut !== 1)) begin
       dutpassed = 0;
-      $display("Test Case 5(Zeros Parallel Loading) Failed");
+      $display("Test Case 7(Ones Parallel Loading) Failed");
       $display("%b  |  %b", parallelDataOut, serialDataOut);
     end
 
@@ -184,7 +184,7 @@ module testshiftregister();
     //testing for 1 serial out and serial loading
     if((parallelDataOut !== 8'b11111111) || (serialDataOut !== 1)) begin
       dutpassed = 0;
-      $display("Test Case 6 (Zeros Serial Loading) Failed");
+      $display("Test Case 8 (Ones Serial Loading) Failed");
       $display("%b  |  %b", parallelDataOut, serialDataOut);
     end
 
