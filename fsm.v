@@ -3,6 +3,7 @@
 `define MISO_OUT 3'd2
 `define MOSI_MEM 3'd3
 `define MOSI_WRI 3'd4
+`define PreADDRESS 3'd6
 `define OFF 3'd5
 module fsm
 (
@@ -25,14 +26,16 @@ module fsm
 
       always @(posedge sclk) begin
 
-      case (state)
-        `ADDRESS:   begin add_WE <= 1; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
-        `MISO_REG:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 1; MISO_Buff <= 0; end
-        `MOSI_MEM:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
-        `MISO_OUT:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 1; end
-        `MOSI_WRI:  begin add_WE <= 0; DM_WE<=1; SR_WE <= 0; MISO_Buff <= 0; end
-        `OFF:       begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
-      endcase
+
+      //case (state)
+       // `ADDRESS:   begin add_WE <= 1; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
+      // `MISO_REG:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 1; MISO_Buff <= 0; end
+      //   `MOSI_MEM:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
+      //   `MISO_OUT:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 1; end
+      //   `MOSI_WRI:  begin add_WE <= 0; DM_WE<=1; SR_WE <= 0; MISO_Buff <= 0; end
+      //   `OFF:       begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
+      // endcase
+
 
       $display("Counter %d, State %d, add %b, dm %b, sr %b, buff %b, cs %b, shiftRegOut0, %b", counter, state, add_WE, DM_WE, SR_WE, MISO_Buff, cs, shiftRegOut0);
       counter <= counter+1;
@@ -44,11 +47,13 @@ module fsm
 
       else if (cs == 0 && state == `OFF) begin
         counter <= counter+1;
-        if (counter == 6 + 1) begin  // Wait for 7 bits to clock in. Takes an extra clock for everything to push through the FSM
-          state = `ADDRESS;
+        if (counter == 6) begin  // Wait for 7 bits to clock in. Takes an extra clock for everything to push through the FSM
+          state <= `PreADDRESS;
         end
       end
-
+      else if (state == `PreADDRESS)begin
+        state <= `ADDRESS;
+      end
       else if (state == `ADDRESS && shiftRegOut0 == 1) begin
         state <= `MISO_REG;
       end
@@ -70,7 +75,7 @@ module fsm
       end
 
       else if(state == `MOSI_MEM) begin
-        if (counter == 6 + 1) begin // Wait for 8 bits to clock in (immediately on the 8th, change memory). Takes an extra clock for everything to push through the FSM
+        if (counter == 6) begin // Wait for 8 bits to clock in (immediately on the 8th, change memory). Takes an extra clock for everything to push through the FSM
           state <= `MOSI_WRI;
           end
       end
@@ -80,5 +85,19 @@ module fsm
       end
 
   end
+
+
+    always @ (state) begin
+          case (state)
+        `PreADDRESS: begin add_WE <=1; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
+        `ADDRESS:   begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
+        `MISO_REG:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 1; MISO_Buff <= 0; end
+        `MOSI_MEM:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
+        `MISO_OUT:  begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 1; end
+        `MOSI_WRI:  begin add_WE <= 0; DM_WE<=1; SR_WE <= 0; MISO_Buff <= 0; end
+        `OFF:       begin add_WE <= 0; DM_WE<=0; SR_WE <= 0; MISO_Buff <= 0; end
+      endcase
+      end
+
 
   endmodule

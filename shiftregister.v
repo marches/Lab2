@@ -28,9 +28,6 @@ output              serialDataOut       // Positive edge synchronized
       else if (peripheralClkEdge == 1) begin
         shiftregistermem = shiftregistermem<<1;
         shiftregistermem[0] = serialDataIn;
-
-        $display("Shift Register address: %b",shiftregistermem);
-
       end
     end
 

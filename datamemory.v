@@ -24,7 +24,6 @@ module datamemory
 
     always @(posedge clk) begin
         if(writeEnable)begin
-            $display("Write Enable: %b",writeEnable);
             memory[address] <= dataIn;
             end
         dataOut <= memory[address];

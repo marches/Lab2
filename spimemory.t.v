@@ -11,8 +11,8 @@ module spimemory_test();
 
 	always #10 clk = !clk;
 
-	parameter write_op = 16'b1111111101010101;
-	parameter read_op = 8'b11010101;
+	parameter write_op = 16'b1010101001110000;
+	parameter read_op = 8'b11110000;
 
 	//mosi_pin is input
 	//miso_pin is output
@@ -81,8 +81,10 @@ module spimemory_test();
 	mosi_pin = write_op[15]; # 100
 	sclk_pin = 1; # 100
 
+
+	sclk_pin = 0; # 100
+
     cs_pin = 1; 
-    sclk_pin = 0; # 100
     sclk_pin = 1; # 100
     sclk_pin = 0; # 100
     sclk_pin = 1; # 100
@@ -114,8 +116,8 @@ module spimemory_test();
 	sclk_pin = 1; # 100
     sclk_pin = 0;
 	mosi_pin = read_op[7]; # 100
-
 	sclk_pin = 1; # 100
+
     sclk_pin = 0; # 100
     sclk_pin = 1; # 100
     sclk_pin = 0; # 100
@@ -132,6 +134,19 @@ module spimemory_test();
     sclk_pin = 0; # 100
     sclk_pin = 1; # 100
     sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+    sclk_pin = 1; # 100
+    sclk_pin = 0; # 100
+
 
 	$finish;
 

@@ -26,6 +26,10 @@ module testshiftregister();
     initial begin
     //running test for serial loading with 0 serial data out
 
+
+    $dumpfile("shift.vcd"); //Creating .vcd file for timing analysis
+    $dumpvars;
+
     parallelLoad = 0;
     parallelDataIn = 8'd16;
     peripheralClkEdge = 1;
@@ -184,6 +188,7 @@ module testshiftregister();
       $display("%b  |  %b", parallelDataOut, serialDataOut);
     end
 
+    $finish();
 
     end
 

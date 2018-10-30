@@ -59,7 +59,7 @@ module spiMemory
     					.positiveedge(cs_pos),
     					.negativeedge(cs_neg));
 
-	shiftregister #(8) sr(.clk(clk),
+	shiftregister #(8) sr(.clk(sclk_cond),
     		           .peripheralClkEdge(sclk_pos),
      		           .parallelLoad(sr_we),
      		           .parallelDataIn(dataMemOut),
